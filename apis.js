@@ -21,7 +21,7 @@ let teacher_pw = {
 };
 let student_pw ={"amanda": "amanda12"};
 
-app.post('/login', function (req, res) {
+app.post('/teacher_login', function (req, res) {
     
     let {uname} = req.body;
     let {password} = req.body;
@@ -160,7 +160,7 @@ app.post('/delete_teacher', function (req, res) {
     res.json("Teacher deleted successfull");
 })
 
-app.get('/get_students', function (req, res) {
+app.get('/get_students', validateToken, function (req, res) {
     
     ss = [];
     ff = [];
@@ -173,7 +173,7 @@ app.get('/get_students', function (req, res) {
 })
 
 
-app.get('/get_teachers', function (req, res) {
+app.get('/get_teachers', validateToken, function (req, res) {
     
     ss = [];
     ff = [];
@@ -189,7 +189,7 @@ app.get('/get_teachers', function (req, res) {
 var subscribed_students = {} 
 total_students = []
 
-app.post('/subscribe', function (req, res) {
+app.post('/subscribe', validateToken,  function (req, res) {
     
     let {s_name} = req.body;
     let {c_name} = req.body;
@@ -202,7 +202,7 @@ app.post('/subscribe', function (req, res) {
 
 })
 
-app.post('/unsubscribe', function (req, res) {
+app.post('/unsubscribe', validateToken, function (req, res) {
     
     let {s_name} = req.body;
     let {c_name} = req.body;
