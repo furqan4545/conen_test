@@ -128,7 +128,6 @@ app.post('/create_student',validateToken, function (req, res) {
 app.post('/student_login', validateToken,  function (req, res) {
     
     let {s_name} = req.body;
-    let {s_id} = req.body;
     let {s_pw} = req.body;
     const user = students.find( (c) => c == s_name)
     console.log("dsdddd: ", user);
